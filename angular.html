@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Application Development</title>
+    <link rel=" stylesheet" href="angular.css">
+</head>
+<body>
+    <header>
+        <h1 class="heading">Mobile Application Development</h1>
+    </header>
+        <div class ="menu">
+            <nav class="navbar">
+                <a class="nav1" target="#" href="index.html">Home </a>
+                <a class="nav1" target="#" href="javascript.html">JScript</a>
+                <a class="nav1" target="#" href="selectors.html">Selectors</a>
+                <a class="nav1" target="#" href="json.html">JSON</a>
+                <a class="nav1" target="#" href="angular.html">Angular</a>
+            </nav>
+        </div>
+        <div class="container">
+            <div class=" box1 sidelinks">
+                <h2 id="sidebar1">Quick Links</h2>
+                    <a id="sidebar" href="#angular">Angular</a>
+                    <a id="sidebar" href="#component">Angular Component</a>
+                    <a id="sidebar" href="#material">Angualar Material</a>
+                    <a id="sidebar" href="#contact">Contact</a>
+            </div>
+            <div class="box angular"id="angular">
+                <h2>What is Angular?</h2>
+                <p>
+                    Angular is an advanced, freely available application development platform developed by Google and the development community. It is generally used to 
+                    create single-page applications for clients using the Model, View, and Controller (MVC) architectural framework. Angular offers a systematic approach 
+                    to web development by providing a collection of tools and frameworks for activities like routing, data binding, and dependency injection.
+                </p>
+            </div>
+
+        <div class="box component" id="component">
+            <h2>What is Angular Component?</h2>
+            <p>
+                Components in Angular are modular and reusable units of code that define views, comprising sets of screen elements users interact with. They encapsulate both 
+                UI elements and logic, typically representing specific features or sections of an application. Components use services for functionality not directly related 
+                to views, injecting them as dependencies to promote modularity, reusability, and efficiency. Both components and services are implemented as classes with 
+                decorators providing metadata for Angular's use.
+            </p>
+            <h3>Key Features:</h3>
+            <p>i. Key feature of Angular - entire app is composed of components.<br>
+                ii. Each component has its own .html, .css, and .ts (typescript).<br>
+                iii. Components are reusable.
+            </p>
+            <h2>Components are the basic building blocks of the Angular UI</h2>
+            <h3>1. Creating a new component</h3>
+            <pre>
+                <b>ng generate component componentName --skip-tests</b>
+                
+                (--skip-tests) - This will remove the .spec.ts file (used for unit testing)!
+                NOTE: To create a component WITHIN another folder, just add folderName/ before componentName
+
+                <b>Shortcut: ng g c componentName --skip-tests</b>
+            </pre>
+            <h3>2. Removing a component manually</h3>
+            <pre>
+                (a.) Delete the folder manually
+                (b.) Remove reference from app.module.ts
+                        i.  Delete import line
+                        ii. Remove reference in @NgModule declarations
+            </pre>
+            <h3>For instance: Creating component named "COURSE"</h3>
+            <pre>
+                <strong>Code: ng g c course</strong>
+            </pre>
+            <img class="img1" src="courseComp.png" alt="Course Component">
+            <br>
+            <p>The 'course' Component has all the html, css, ts(typescript), spec.ts(testing file) files after creating the component.</p>
+            <img class="img2" src="courseTs.png" alt="course.ts file">
+            <p>
+                Selector: 'app-course' <b>(Custom tag for component)</b><br><br>
+                TemplateUrl: './course.component.html' <b>(Path to the HTML for component)</b><br><br>
+                StyleUrls: './course.component.css' <b>(Stylesheet to apply to Component)</b>
+            </p>
+            <img class="img3" src="courseAppTs.png" alt="course.ts file">
+            <p>
+                After creating the course component, it wil directly import their path in app.module.ts file and also the Course Component is declared in declarations section as well. 
+            </p>
+        </div>
+        
+        <div class="box material" id="material">
+            <h2>What is Angualr Material?</h2>
+            <p>
+                Angular Material is a UI component library designed to enhance web applications by providing a set of modern, consistent, and efficient user interface components. 
+                It helps developers create attractive and consistent user experiences while improving the performance of their applications. By leveraging Angular Material, 
+                developers can easily incorporate pre-built components that offer a better look and feel compared to native HTML elements. Angular Material's components are 
+                optimized, well-tested, and well-documented, ensuring a seamless integration and development experience.
+            </p>
+            <h3>Adding Angular Material in order to run various libraries</h3>
+            <pre>
+                <b>ng add @angular/material</b>
+            </pre>
+            <p>It will install angular material, Component Development Kit(CDK) and Angular Animations</p>
+            <h3>Types of Angualr Materual</h3>
+            <h3>1. Mat-Checkbox</h3>
+            <p>Mat-checkbox provides the same functionality as a native "checkbox" enhanced with Material Design styling and animations.</p>
+            <p> 
+                <b>API reference for Angular Material Checkbox</b>
+                <br><br>
+                <img class="img4" src="matCheckbox.png" alt="Mat-Checkbox"><br>
+                Code:
+                <code>import {MatCheckboxModule} from '@angular/material/checkbox';</code>
+                <br><br>
+                This import need to be add in "app.module.ts" file and also need to declare in declarations section for implemention of mat-checkbox tag.
+            </p>
+
+            <h3>Simple Program with MatCheckbox</h3>
+            <pre>
+                <code>
+                    <b class="htm">This is html file:</b><br>
+                    &lt;div&gt;
+                        &lt;mat-checkbox [(ngModel)]="isChecked"&gt;Check me&lt;/mat-checkbox&gt;
+                    &lt;/div&gt;
+
+                    &lt;div *ngIf="isChecked"&gt;
+                        &lt;p&gt;The checkbox is checked!&lt;/p&gt;
+                    &lt;/div&gt;
+                    <p>                    The HTML code creates a mat-checkbox component from Angular Material, utilizing two-way data binding with [(ngModel)] to synchronize the checkbox state 
+                    with the isChecked property in the component class. This property determines the visibility of a div section through *ngIf, toggling its display based 
+                    on the value of isChecked. </p>
+                    <b class="ts">This is typescript file:</b><br>  
+                    import { Component } from '@angular/core';
+
+                    @Component
+                    ({
+                    selector: 'app-course',
+                    templateUrl: './course.component.html',
+                    styleUrl: './course.component.css'
+                    })
+
+                    export class CourseComponent 
+                    {
+                    isChecked: boolean = false;
+                    }
+                    <p>                    The CourseComponent class defines isChecked as a boolean property initialized to false, binding it to the checkbox for dynamic 
+                    state management within the component.</p>
+                </code>
+            </pre>
+            <h3>Output</h3>
+            <img class="img5" src="checkboxRun.png" alt="Functionality of mat-checkbox">
+
+            <h3>1. Mat-Radio-Button</h3>
+            <p>Mat-radio-button provides the same functionality as a native type "radio" enhanced with Material Design styling and animations.</p>
+            <p> 
+                <b>API reference for Angular Material Radio </b>
+                <br><br>
+                <img  class="img6" src="matRadioButton.png" alt="Mat-Radio-Button"><br>
+                Code:
+                <code>import {MatRadioModule} from '@angular/material/radio';</code>
+                <br><br>
+                This import need to be add in "app.module.ts" file and also need to declare in declarations section for implemention of mat-checkbox tag.
+            </p>
+
+            <h3>Simple Program with MatRadioButton</h3>
+            <pre>
+                <code>
+                    <b class="htm">This is html file:</b><br>
+                    &lt;label id="example-radio-group-label"&gt;Pick your favorite season&lt;/label&gt;
+                    &lt;mat-radio-group
+                        aria-labelledby="example-radio-group-label"
+                        class="example-radio-group"
+                        [(ngModel)]="favoriteSeason"&gt;
+                        &lt;mat-radio-button *ngFor="let season of seasons" class="example-radio-button" [value]="season"&gt;
+                        {{season}}
+                        &lt;/mat-radio-button&gt;
+                    &lt;/mat-radio-group&gt;
+                    &lt;div&gt;Your favorite season is: {{favoriteSeason}}&lt;/div&gt;
+                    <p>                    The HTML file (radio-buttons.component.html) structures the radio button component. It includes a label providing context for the radio 
+                    group, a mat-radio-group element wrapping the radio buttons, and a div to display the selected season dynamically. Each radio button is generated using 
+                    ngFor to loop through the seasons array, and its value is bound to the corresponding season. </p>
+                    <b class="ts">This is typescript file:</b><br>  
+                    import { Component } from '@angular/core';
+
+                    @Component({
+                    selector: 'app-course',
+                    templateUrl: './course.component.html',
+                    styleUrl: './course.component.css'
+                    })
+                    export class CourseComponent {
+                    favoriteSeason: string;
+                    seasons: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];
+
+                    constructor() {
+                        this.favoriteSeason = this.seasons[0];
+                    }
+                    }
+                    <p>                    It imports the Component decorator and defines the CourseComponent class, which holds the selected favorite season and the list of available 
+                    seasons. The constructor initializes the favoriteSeason variable with the first season from the seasons array.</p>
+                </code>
+            </pre>
+            <h3>Output</h3>
+            <img class="img7" src="radioRun.png" alt="Functionality of mat-radio-button">
+        </div>
+</body>
+<footer>
+    <div class="foot foot-end" id="contact">
+        <a class="email" href="contact.html">Contact Us</a>
+        <p>Phone: 123-456-7890</p>
+        <a class="email" href="mailto:aswad.azan42@gmail.com">Click to Email: aswad.azan42@gmail.com</a>
+        <p>Address: 1212 Sheridan College Drive</p>
+    </div>
+<p>Copyright &#169 2024. All rights Reserved <a target="_blank" href="https://www.sheridancollege.ca/en">Sheridan College.</a></p>
+</footer>
+</html>
+
